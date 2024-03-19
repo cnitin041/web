@@ -1,0 +1,30 @@
+body{
+  padding: 25px;
+}
+.title {
+	color: #5C6AC4;
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    margin-top: 20px;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.section h2 {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+.section p {
+    margin: 5px 0;
+}
