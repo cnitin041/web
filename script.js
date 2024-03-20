@@ -1,17 +1,18 @@
 function showTime() {
     var currentTimeElement = document.getElementById('currentTime');
     var currentTime = new Date().toUTCString();
-    
-    // Remove the fade-in class to reset the animation
-    currentTimeElement.classList.remove('fade-in');
-    
-    // Update the content with the new time
     currentTimeElement.innerHTML = currentTime;
     
-    // Re-add the fade-in class after a short delay to trigger the animation
+    // Apply slide-in animation
+    currentTimeElement.classList.add('slide-in');
+    
+    // Apply scale-up animation after a short delay
     setTimeout(function() {
-        currentTimeElement.classList.add('fade-in');
-    }, 50); // Adjust the delay as needed
+        currentTimeElement.classList.add('scale-up');
+    }, 500); // Adjust the delay as needed
+    
+    // Apply rotation animation
+    currentTimeElement.classList.add('rotate');
 }
 
 showTime(); // Display initial time
