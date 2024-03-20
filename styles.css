@@ -58,3 +58,16 @@ h2 {
   font-size: 18px;
   line-height: 1.6; /* Adjusted line-height for better readability */
 }
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
