@@ -28,8 +28,16 @@ h2 {
   background: linear-gradient(to bottom, rgba(141, 182, 205, 0.4), rgba(141, 182, 205, 0.7)); /* Blurry effect using gradients and transparency */
   padding: 20px;
   border-radius: 10px;
+  color: #000; /* Black text color inside section */
 }
 
+.section a {
+  color: #1E90FF; /* Bright blue link color */
+}
+
+.section a:hover {
+  color: #FF6347; /* Bright red color on hover */
+}
 
 .section h2 {
   border-bottom: 1px solid #ccc;
