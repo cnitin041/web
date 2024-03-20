@@ -1,13 +1,13 @@
 body {
   padding: 25px;
   font-family: Arial, sans-serif;
-  margin: 20px;
-  background: linear-gradient(to bottom right, #121212, #1f1f1f);
-  color: #fff;
+  margin: 0;
+  background-color: #FFD700; /* Bright yellow background */
+  color: #1E90FF; /* Bright blue text color */
 }
 
 .title {
-  color: #5C6AC4;
+  color: #FF6347; /* Bright red title color */
   font-size: 24px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -25,7 +25,7 @@ h2 {
 
 .section {
   margin-bottom: 20px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
   padding: 20px;
   border-radius: 10px;
 }
@@ -43,17 +43,11 @@ h2 {
   line-height: 1.5;
 }
 
-/* Make certain elements white */
-.title,
-.section {
-  color: #fff;
-}
-
 /* Add animations or transitions for extra cinematic effect */
 .section h2, .section p {
   transition: color 0.3s ease-in-out;
 }
 
 .section:hover h2, .section:hover p {
-  color: #5C6AC4;
+  color: #FF6347; /* Bright red color on hover */
 }
