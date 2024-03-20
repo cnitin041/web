@@ -2,7 +2,7 @@ body {
   padding: 25px;
   font-family: Arial, sans-serif;
   margin: 20px;
-  background-color: #121212;
+  background: linear-gradient(to bottom right, #121212, #1f1f1f);
   color: #fff;
 }
 
@@ -25,6 +25,9 @@ h2 {
 
 .section {
   margin-bottom: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .section h2 {
