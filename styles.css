@@ -35,9 +35,6 @@ h2 {
   color: #1E90FF; /* Bright blue link color */
 }
 
-.section a:hover {
-  color: #FF6347; /* Bright red color on hover */
-}
 
 .section h2 {
   border-bottom: 1px solid #ccc;
