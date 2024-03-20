@@ -29,12 +29,12 @@ h2 {
   padding: 30px; /* Increased padding */
   border-radius: 15px; /* Increased border-radius */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added box shadow for depth */
-  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out; /* Added transition for hover effect */
+  transition: transform 0.3s ease-in-out; /* Added transition for hover effect */
+  color: #000; /* Black text color inside section */
 }
 
 .section:hover {
   transform: translateY(-5px); /* Lift section slightly on hover */
-  color: #000; /* Darken text color on hover */
 }
 
 .section a {
@@ -58,7 +58,3 @@ h2 {
   font-size: 18px;
   line-height: 1.6; /* Adjusted line-height for better readability */
 }
-
-
-
-
