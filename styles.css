@@ -61,11 +61,4 @@ h2 {
 
 
 
-/* Add animations or transitions for extra cinematic effect */
-.section h2, .section p {
-  transition: color 0.3s ease-in-out;
-}
 
-.section:hover h2, .section:hover p {
-  color: #FF6347; /* Bright red color on hover */
-}
