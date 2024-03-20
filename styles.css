@@ -43,6 +43,12 @@ h2 {
   line-height: 1.5;
 }
 
+/* Make certain elements white */
+.title,
+.section {
+  color: #fff;
+}
+
 /* Add animations or transitions for extra cinematic effect */
 .section h2, .section p {
   transition: color 0.3s ease-in-out;
