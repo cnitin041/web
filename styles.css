@@ -25,7 +25,7 @@ h2 {
 
 .section {
   margin-bottom: 20px;
-  background-color: #ADD8E6; /* Light blue background */
+  background: linear-gradient(to bottom, rgba(141, 182, 205, 0.4), rgba(141, 182, 205, 0.7)); /* Blurry effect using gradients and transparency */
   padding: 20px;
   border-radius: 10px;
 }
