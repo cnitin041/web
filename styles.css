@@ -43,7 +43,7 @@ header {
     border-radius: 50%;
     margin: 0 auto 20px;
     background-color: var(--primary-color);
-    background-image: url('/api/placeholder/150/150');
+    background-image: url('profile-photo.jpg');
     background-size: cover;
     background-position: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
