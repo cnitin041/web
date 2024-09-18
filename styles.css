@@ -43,7 +43,7 @@ header {
     border-radius: 50%;
     margin: 0 auto 20px;
     background-color: var(--primary-color);
-    background-image: url('profile-photo.jpg');
+    background-image: url('https://media.licdn.com/dms/image/v2/D5603AQEOhQZ84ymRjg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1714642789578?e=1732147200&v=beta&t=WH0fos3OBGd3TXNwVZAuVtUrkUo8kKUwMwlhFvREwwc');
     background-size: cover;
     background-position: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
