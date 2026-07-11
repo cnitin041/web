@@ -17,7 +17,7 @@ const experiences = [
     title: 'Web Developer & CRM Manager',
     company: 'DR. Digitalz Pvt. Ltd., Jaipur',
     date: 'Jun 2024 - Dec 2024',
-    badge: 'Promotion',
+    badge: undefined,
     metric: '90% Traffic Boost',
     points: [
       'Developed custom CRM modules and automated ERP data processing, reducing manual work by 60% and improving workflow efficiency by 40%',
@@ -30,7 +30,7 @@ const experiences = [
     title: 'AI-Powered Freelance Developer',
     company: 'Cross-Platform & Automation',
     date: 'May 2023 - Feb 2024',
-    badge: '10K+ Downloads',
+    badge: undefined,
     metric: '75% Engagement',
     points: [
       'Built full-stack cross-platform medical application (Flutter + Node.js) serving 3,000+ active users with secure authentication and role-based access',

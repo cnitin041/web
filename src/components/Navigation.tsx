@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 const links = [
   { href: '#about', label: 'About' },
@@ -13,6 +13,7 @@ const links = [
 
 export default function Navigation() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const current = document.documentElement.getAttribute('data-theme') as
@@ -22,6 +23,11 @@ export default function Navigation() {
     setTheme(current === 'dark' ? 'dark' : 'light')
   }, [])
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [menuOpen])
+
   const toggleTheme = () => {
     const next = theme === 'dark' ? 'light' : 'dark'
     setTheme(next)
@@ -29,13 +35,17 @@ export default function Navigation() {
     localStorage.setItem('theme', next)
   }
 
+  const closeMenu = useCallback(() => setMenuOpen(false), [])
+
   return (
     <nav className="nav-wrapper">
       <div className="nav-inner">
-        <ul className="nav-links">
+        <div className="nav-brand" />
+
+        <ul className={`nav-links${menuOpen ? ' nav-links--open' : ''}`}>
           {links.map((link) => (
             <li key={link.href}>
-              <a href={link.href}>{link.label}</a>
+              <a href={link.href} onClick={closeMenu}>{link.label}</a>
             </li>
           ))}
         </ul>
@@ -53,8 +63,24 @@ export default function Navigation() {
               <i className="fas fa-moon"></i>
             )}
           </button>
+
+          <button
+            className={`hamburger${menuOpen ? ' hamburger--open' : ''}`}
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
         </div>
       </div>
+
+      <div
+        className={`nav-overlay${menuOpen ? ' nav-overlay--visible' : ''}`}
+        onClick={closeMenu}
+      />
     </nav>
   )
 }
