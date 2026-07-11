@@ -40,7 +40,18 @@ export default function Navigation() {
   return (
     <nav className="nav-wrapper">
       <div className="nav-inner">
-        <div className="nav-brand" />
+        <div className="nav-left">
+          <button
+            className={`hamburger${menuOpen ? ' hamburger--open' : ''}`}
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
 
         <ul className={`nav-links${menuOpen ? ' nav-links--open' : ''}`}>
           <li className="nav-close-item">
@@ -67,17 +78,6 @@ export default function Navigation() {
             ) : (
               <i className="fas fa-moon"></i>
             )}
-          </button>
-
-          <button
-            className={`hamburger${menuOpen ? ' hamburger--open' : ''}`}
-            onClick={() => setMenuOpen((v) => !v)}
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={menuOpen}
-          >
-            <span />
-            <span />
-            <span />
           </button>
         </div>
       </div>

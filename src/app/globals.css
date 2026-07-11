@@ -540,7 +540,6 @@ body {
 
 @media (max-width: 768px) {
   .hamburger { display: flex; }
-  .nav-brand { flex: 1; }
 
   .nav-close-item {
     display: flex;
