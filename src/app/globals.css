@@ -514,26 +514,58 @@ body {
 
 .hamburger:hover { border-color: var(--primary); }
 
+.nav-close-item {
+  display: none;
+}
+
+.nav-close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.nav-close-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
 @media (max-width: 768px) {
   .hamburger { display: flex; }
   .nav-brand { flex: 1; }
 
+  .nav-close-item {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
   .nav-links {
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0;
     width: 280px;
     height: 100dvh;
     z-index: 99;
     flex-direction: column;
     gap: 2px;
-    padding: 80px 24px 32px;
+    padding: 20px 20px 32px;
     background: var(--bg-secondary);
-    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
     overflow-y: auto;
     opacity: 0;
     visibility: hidden;
-    transform: translateX(100%);
+    transform: translateX(-100%);
     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   }
 

@@ -43,6 +43,11 @@ export default function Navigation() {
         <div className="nav-brand" />
 
         <ul className={`nav-links${menuOpen ? ' nav-links--open' : ''}`}>
+          <li className="nav-close-item">
+            <button className="nav-close-btn" onClick={closeMenu} aria-label="Close menu">
+              <i className="fas fa-times"></i>
+            </button>
+          </li>
           {links.map((link) => (
             <li key={link.href}>
               <a href={link.href} onClick={closeMenu}>{link.label}</a>
