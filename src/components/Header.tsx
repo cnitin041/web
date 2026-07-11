@@ -6,7 +6,7 @@ export default function Header() {
           <div
             className="hero-image"
             style={{
-              backgroundImage: "url('/nitin.jpg')",
+              backgroundImage: "url('/Nitin.jpg')",
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}
