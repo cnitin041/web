@@ -1456,16 +1456,18 @@ footer { background: var(--bg-secondary); }
 }
 
 @media (max-width: 480px) {
-  .hero { padding: 56px 20px 92px; }
-  .hero h1 { font-size: clamp(2rem, 8vw, 2.5rem); line-height: 1.05; }
-  .hero-subtitle { font-size: 1rem; }
-  .hero-image-wrapper { width: clamp(136px, 42vw, 154px); height: clamp(170px, 52vw, 190px); }
-  .hero-eyebrow { font-size: 0.66rem; }
-  .hero-description { font-size: 0.94rem; }
-  .hero-contact { flex-direction: column; gap: 8px; }
-  .hero-cta { flex-direction: column; align-items: stretch; gap: 10px; }
-  .hero-cta .btn { width: 100%; justify-content: center; padding: 11px 16px; }
-  .hero-bottomline { left: 20px; transform: none; width: calc(100% - 40px); }
+  .hero { padding: 40px 20px 72px; }
+  .hero-content { gap: 22px; }
+  .hero h1 { font-size: clamp(2rem, 8vw, 2.5rem); line-height: 1.05; margin-bottom: 10px; }
+  .hero-subtitle { font-size: 1rem; margin-bottom: 10px; }
+  .hero-image-wrapper { width: 104px; height: 130px; }
+  .hero-image-note { bottom: -22px; font-size: 0.62rem; }
+  .hero-eyebrow { font-size: 0.66rem; margin-bottom: 12px; }
+  .hero-description { font-size: 0.9rem; line-height: 1.55; margin-bottom: 14px; }
+  .hero-contact { flex-direction: column; gap: 6px; margin-bottom: 18px; }
+  .hero-cta { flex-direction: row; align-items: stretch; gap: 8px; }
+  .hero-cta .btn { flex: 1; min-width: 0; width: auto; justify-content: center; padding: 10px 6px; font-size: 0.76rem; }
+  .hero-bottomline { left: 20px; bottom: 18px; transform: none; width: calc(100% - 40px); padding-top: 10px; }
   .hero-bottomline span:last-child { max-width: 56%; text-align: right; }
 
   .section { margin-bottom: 44px; }
@@ -1484,7 +1486,7 @@ footer { background: var(--bg-secondary); }
 @media (max-width: 360px) {
   .hero { padding-inline: 16px; }
   .hero h1 { font-size: clamp(1.8rem, 8vw, 2rem); }
-  .hero-image-wrapper { width: 136px; height: 170px; }
+  .hero-image-wrapper { width: 96px; height: 120px; }
   .hero-bottomline { left: 16px; width: calc(100% - 32px); }
   .section-header h2 { font-size: 1.15rem; }
   .timeline-item { padding-left: 36px; }
