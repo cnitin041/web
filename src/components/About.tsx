@@ -7,13 +7,9 @@ export default function About() {
       </div>
 
       <p className="about-text">
-        Agentic AI and Full-Stack AI Engineer specializing in production-grade AI
-        systems — from GPU-optimized model serving and multi-agent orchestration to
-        scalable full-stack applications. Experienced in designing Flask-based AI
-        backends deployed on NVIDIA L4 GPUs with CUDA-optimized inference pipelines,
-        building RESTful APIs for multi-model serving, and automating workflows with
-        AI-driven orchestration. Passionate about bridging the gap between cutting-edge
-        AI research and production-ready systems that deliver real user impact.
+        Full Stack AI Engineer focused on taking AI products from prototype to production. My work spans
+        multi-model inference, GPU performance, secure backend systems, and workflow automation—from
+        voice agents and RAG applications to cross-platform products serving thousands of users.
       </p>
 
       <div className="stats-bar" style={{ margin: '40px auto 0' }}>
@@ -21,40 +17,40 @@ export default function About() {
           <div className="stat-icon">
             <i className="fas fa-briefcase"></i>
           </div>
-          <div className="stat-number" data-target="3">
+          <div className="stat-number" data-target="3" data-suffix="×">
             0
           </div>
-          <div className="stat-label">Years Experience</div>
+          <div className="stat-label">Faster inference</div>
         </div>
 
         <div className="stat-card">
           <div className="stat-icon">
             <i className="fas fa-code"></i>
           </div>
-          <div className="stat-number" data-target="15">
+          <div className="stat-number" data-target="45" data-suffix="%">
             0
           </div>
-          <div className="stat-label">Projects</div>
+          <div className="stat-label">Higher domain accuracy</div>
         </div>
 
         <div className="stat-card">
           <div className="stat-icon">
             <i className="fas fa-cogs"></i>
           </div>
-          <div className="stat-number" data-target="35">
+          <div className="stat-number" data-target="3" data-suffix="k+">
             0
           </div>
-          <div className="stat-label">Skills</div>
+          <div className="stat-label">Medical app users</div>
         </div>
 
         <div className="stat-card">
           <div className="stat-icon">
             <i className="fas fa-certificate"></i>
           </div>
-          <div className="stat-number" data-target="4">
+          <div className="stat-number" data-target="1" data-suffix="k+">
             0
           </div>
-          <div className="stat-label">Certifications</div>
+          <div className="stat-label">Concurrent requests</div>
         </div>
       </div>
     </section>
