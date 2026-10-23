@@ -37,7 +37,6 @@ export default function Header() {
               backgroundPosition: 'center',
             }}
           />
-          <div className="hero-image-note"><span /> AI systems, built for production</div>
         </div>
       </div>
       <div className="hero-bottomline"><span>Based in India</span><span>AI engineering · Full-stack development · Automation</span></div>

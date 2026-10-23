@@ -28,7 +28,6 @@ export default function Animations() {
         .from('.hero-name', { opacity: 0, y: 30, duration: 0.6, ease: 'power2.out' }, '-=0.4')
         .from('.hero-typed-text', { opacity: 0, duration: 0.4 }, '-=0.3')
         .from('.hero-description', { opacity: 0, y: 20, duration: 0.5 }, '-=0.2')
-        .from('.hero-cta .btn', { opacity: 0, y: 20, stagger: 0.15, duration: 0.5 }, '-=0.2')
 
       /* ─── Typewriter ─── */
       let roleIndex = 0
