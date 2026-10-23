@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Nitin Choudhary - Developer',
+  title: 'Nitin Choudhary | Full Stack AI Engineer',
   description:
-    'Innovative Software Developer with expertise in AI/ML systems, full-stack development, and scalable web applications.',
+    'Full Stack AI Engineer building production-grade Generative AI systems, GPU-optimized inference pipelines, and scalable applications.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

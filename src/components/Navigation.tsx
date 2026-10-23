@@ -41,6 +41,10 @@ export default function Navigation() {
     <nav className="nav-wrapper">
       <div className="nav-inner">
         <div className="nav-left">
+          <a className="nav-brand" href="#hero" onClick={closeMenu} aria-label="Nitin Choudhary home">
+            <span>NC</span>
+            <strong>Nitin Choudhary</strong>
+          </a>
           <button
             className={`hamburger${menuOpen ? ' hamburger--open' : ''}`}
             onClick={() => setMenuOpen((v) => !v)}

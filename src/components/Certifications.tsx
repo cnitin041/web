@@ -1,8 +1,8 @@
 const certifications = [
-  { name: 'RHCSA Certified System Administrator', icon: 'fa-server' },
   { name: 'Introduction to Generative AI', icon: 'fa-robot' },
-  { name: 'Data Science & Machine Learning', icon: 'fa-chart-line' },
-  { name: 'Python (Basic)', icon: 'fa-python' },
+  { name: 'Data Science and Machine Learning', icon: 'fa-chart-line' },
+  { name: 'Python Certification (Grass)', icon: 'fa-code' },
+  { name: 'AI Agent Builder (Credly)', icon: 'fa-wand-magic-sparkles' },
 ]
 
 export default function Certifications() {

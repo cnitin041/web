@@ -72,7 +72,9 @@ export default function Animations() {
           duration: 2,
           ease: 'power2.out',
           onUpdate: () => {
-            el.textContent = Math.round(obj.val) + '+'
+            const value = Math.round(obj.val)
+            const suffix = el.getAttribute('data-suffix') || '+'
+            el.textContent = `${value}${suffix}`
           },
           scrollTrigger: {
             trigger: el.closest('.stats-bar'),

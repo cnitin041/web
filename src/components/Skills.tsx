@@ -3,12 +3,11 @@ const skillCategories = [
     title: 'Agentic AI',
     icon: 'fa-robot',
     skills: [
-      'Multi-Agent Architectures',
-      'LLM Serving & Orchestration',
-      'Tool-Use & Function Calling',
-      'RAG Pipeline Development',
-      'AI Agent Backend Design',
-      'Prompt Engineering',
+      'AI Agent Workflows',
+      'LLM Integration',
+      'RAG Pipelines',
+      'Speech-to-Text & Text-to-Speech',
+      'AI Workflow Automation',
     ],
   },
   {
@@ -17,16 +16,15 @@ const skillCategories = [
     skills: [
       'Transformers (T5)',
       'NLP & Generative AI',
-      'Fine-Tuning & Domain Adaptation',
+      'Model Fine-Tuning',
       'Recommendation Systems',
-      'Multi-Model Inference Serving',
-      'Model Lifecycle Management',
+      'Multi-Model Inference',
     ],
   },
   {
     title: 'Full-Stack Backend',
     icon: 'fa-server',
-    skills: ['Node.js / Express.js', 'Flask / Gunicorn', 'REST & GraphQL APIs', 'MVC Architecture', 'JWT / OAuth / RBAC'],
+    skills: ['Node.js', 'Flask / Gunicorn', 'REST APIs', 'MVC Architecture', 'JWT / OAuth / RBAC'],
   },
   {
     title: 'GPU & Performance',
@@ -36,7 +34,7 @@ const skillCategories = [
   {
     title: 'DevOps & Infrastructure',
     icon: 'fa-cloud',
-    skills: ['Linux Servers', 'CI/CD Pipelines', 'Docker / Deployment Automation', 'Process Management'],
+    skills: ['Linux Servers', 'CI/CD Pipelines', 'Deployment Automation', 'Process Management'],
   },
   {
     title: 'Databases & Vector Stores',
@@ -51,12 +49,12 @@ const skillCategories = [
   {
     title: 'Frontend & Mobile',
     icon: 'fa-mobile-alt',
-    skills: ['Flutter', 'React', 'Responsive Web', 'WordPress'],
+    skills: ['Flutter', 'Android & iOS', 'Cross-platform APIs'],
   },
   {
     title: 'Languages',
     icon: 'fa-code',
-    skills: ['Python', 'JavaScript (Node.js)', 'C++', 'PHP', 'SQL'],
+    skills: ['Python', 'Node.js', 'C++'],
   },
 ]
 
