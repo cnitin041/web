@@ -1459,7 +1459,7 @@ footer { background: var(--bg-secondary); }
 
 @media (max-width: 480px) {
   .hero { padding: 40px 20px 116px; }
-  .hero-content { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 12px; }
+  .hero-content { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 12px; }
   .hero-copy { display: contents; }
   .hero-copy > :not(.hero-contact) { grid-column: 1 / -1; }
   .hero-image-wrapper { grid-column: 1; grid-row: 1; justify-self: start; width: 104px; height: 130px; }
