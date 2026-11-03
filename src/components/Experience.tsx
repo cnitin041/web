@@ -6,7 +6,7 @@ const experiences = [
     badge: 'Current',
     metric: '3× inference speed',
     points: [
-      'W3Agent – AI Agents & Automation Platforms: Built W3Agent using LangChain, LangGraph, and LangSmith to classify emails and generate context-aware outreach replies, with a lead-pipeline dashboard and automated guest-post negotiation follow-ups.',
+      'Built W3Agent with LangChain and LangGraph to classify emails, draft context-aware outreach, manage leads, and automate guest-post follow-ups.',
       'Developed WarrantyHub to automate warranty registration and order verification across multiple Amazon seller accounts.',
       'Designed an AI voice agent for inbound and outbound calls, combining speech-to-text, LLMs, and text-to-speech to qualify leads, answer FAQs, and schedule appointments.',
       'Deployed a Flask multi-model backend on NVIDIA L4; tuned Gunicorn workers, model preloading, GPU memory, and CUDA for concurrent text, image, and recommendation workloads.',
