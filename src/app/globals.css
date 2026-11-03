@@ -1636,6 +1636,7 @@ footer .footer-text { color: #9eb0aa; }
   .stat-card { padding: 18px 8px; }
 }
 @media (max-width: 540px) {
+  .nav-left { flex: 1; justify-content: space-between; }
   .nav-brand strong { font-size: .9rem; }
   .hero { padding: 52px 20px 83px; }
   .hero-content { gap: 38px; }
