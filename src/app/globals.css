@@ -1667,63 +1667,79 @@ footer .footer-text { color: #9eb0aa; }
 
 .familiar-chat {
   position: fixed;
+  inset: 0;
   z-index: 120;
+  pointer-events: none;
+}
+
+.familiar-roamer {
+  position: fixed;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  padding: 5px;
+  border: 2px solid #c6a775;
+  border-radius: 50%;
+  background: #fffaf0;
+  box-shadow: 0 8px 24px rgba(25, 43, 43, .28);
+  cursor: pointer;
+  pointer-events: auto;
+  touch-action: manipulation;
+  transition: left 2.3s cubic-bezier(.2,.8,.2,1), top 2.3s cubic-bezier(.2,.8,.2,1), transform .2s ease, box-shadow .2s ease;
+  animation: familiar-hover 3.4s ease-in-out infinite;
+}
+
+.familiar-roamer:hover { transform: scale(1.08); box-shadow: 0 12px 30px rgba(25, 43, 43, .32); }
+.familiar-roamer:focus-visible, .familiar-chat-button:focus-visible, .familiar-close:focus-visible { outline: 3px solid #d8ae6f; outline-offset: 3px; }
+.familiar-roamer--following { transition-duration: .18s, .18s, .2s, .2s; }
+.familiar-roamer--following:hover { transform: scale(1.04); }
+.familiar-roamer-spark { position: absolute; top: -5px; right: 1px; color: #bd8a53; font-size: .85rem; text-shadow: 0 1px #fffaf0; }
+.familiar-mark { display: block; width: 100%; height: 100%; }
+
+@keyframes familiar-hover {
+  0%, 100% { margin-top: 0; }
+  50% { margin-top: -5px; }
+}
+
+.familiar-controls {
+  position: fixed;
   right: 28px;
-  bottom: 96px;
+  bottom: 92px;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 12px;
-  font-family: inherit;
+  pointer-events: none;
 }
 
-.familiar-launcher {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  min-height: 60px;
-  padding: 7px 18px 7px 8px;
-  border: 1px solid #c6a775;
-  border-radius: 999px;
-  background: #fffaf0;
-  color: #344d4b;
-  box-shadow: 0 8px 28px rgba(25, 43, 43, .23);
-  cursor: pointer;
-  transition: transform .2s ease, box-shadow .2s ease, background .25s ease;
-}
-
-.familiar-launcher:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 34px rgba(25, 43, 43, .29);
-  background: #fffdf7;
-}
-
-.familiar-launcher:focus-visible, .familiar-close:focus-visible {
-  outline: 3px solid #d8ae6f;
-  outline-offset: 3px;
-}
-
-.familiar-launcher-icon, .familiar-panel-portrait, .familiar-message-avatar {
+.familiar-chat-button {
   display: grid;
   place-items: center;
-  flex: 0 0 auto;
-  border: 1px solid rgba(190, 151, 96, .55);
+  width: 48px;
+  height: 48px;
+  border: 1px solid #c6a775;
   border-radius: 50%;
-  background: #f1e5d0;
+  background: #fffaf0;
+  color: #344d4b;
+  box-shadow: 0 8px 24px rgba(25, 43, 43, .25);
+  cursor: pointer;
+  font-size: 1.1rem;
+  pointer-events: auto;
+  transition: transform .2s ease, background .2s ease;
 }
 
-.familiar-launcher-icon { width: 44px; height: 44px; }
-.familiar-mark { display: block; width: 100%; height: 100%; }
-.familiar-launcher-label { font-family: Georgia, serif; font-size: .95rem; font-weight: 700; white-space: nowrap; }
-.familiar-launcher-spark { position: absolute; top: -5px; right: 11px; color: #bd8a53; font-size: .8rem; }
-.familiar-launcher--open { color: #f4ecdc; background: #304b4c; border-color: #9f8865; }
-.familiar-launcher--open .familiar-launcher-icon { background: #e9d8b8; }
+.familiar-chat-button:hover { transform: translateY(-2px); background: #fffdf7; }
+.familiar-chat-button--open { background: #304b4c; color: #f4ecdc; }
+.familiar-chat-button--open:hover { background: #304b4c; }
 
 .familiar-panel {
   position: absolute;
   right: 0;
   bottom: calc(100% + 12px);
+  pointer-events: auto;
   display: flex;
   flex-direction: column;
   width: min(370px, calc(100vw - 32px));
@@ -1785,13 +1801,13 @@ footer .footer-text { color: #9eb0aa; }
 .familiar-footnote { margin: 10px 16px 13px; color: var(--text-muted); font-size: .58rem; text-align: center; }
 
 @media (max-width: 540px) {
-  .familiar-chat { right: 16px; bottom: 76px; }
-  .familiar-launcher { min-height: 56px; padding-right: 15px; }
-  .familiar-launcher-icon { width: 42px; height: 42px; }
+  .familiar-controls { right: 16px; bottom: 76px; }
+  .familiar-roamer { width: 56px; height: 56px; }
+  .familiar-chat-button { width: 44px; height: 44px; }
   .familiar-panel { max-height: min(440px, calc(100dvh - 160px)); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .familiar-launcher { transition: none; }
+  .familiar-roamer { animation: none; transition: none; }
   .familiar-panel { animation: none; }
 }
