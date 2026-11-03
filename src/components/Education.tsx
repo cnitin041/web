@@ -25,11 +25,13 @@ const education = [
 export default function Education() {
   return (
     <section className="section" id="education">
+      <p className="chapter-label"><span>04</span> THE TRAINING GROUNDS</p>
       <div className="section-header">
-        <h2>Education</h2>
+        <h2>Where it began<span>.</span></h2>
         <div className="section-line" />
       </div>
 
+      <p className="section-subtitle">Education &amp; foundations</p>
       <div className="education-grid">
         {education.map((edu) => (
           <div key={edu.degree} className="education-card">

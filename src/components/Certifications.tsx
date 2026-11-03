@@ -8,11 +8,13 @@ const certifications = [
 export default function Certifications() {
   return (
     <section className="section" id="certifications">
+      <p className="chapter-label"><span>06</span> ARTIFACTS EARNED</p>
       <div className="section-header">
-        <h2>Certifications</h2>
+        <h2>Proof of practice<span>.</span></h2>
         <div className="section-line" />
       </div>
 
+      <p className="section-subtitle">Certifications gathered on the journey</p>
       <div className="certifications-grid">
         {certifications.map((cert) => (
           <div key={cert.name} className="cert-card">

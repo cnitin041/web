@@ -61,11 +61,13 @@ const skillCategories = [
 export default function Skills() {
   return (
     <section className="section" id="skills">
+      <p className="chapter-label"><span>02</span> THE INVENTORY</p>
       <div className="section-header">
-        <h2>Skills & Expertise</h2>
+        <h2>Tools of the trade<span>.</span></h2>
         <div className="section-line" />
       </div>
 
+      <p className="section-subtitle">Skills &amp; expertise collected along the way</p>
       <div className="skills-grid">
         {skillCategories.map((cat) => (
           <div key={cat.title} className="skill-category">

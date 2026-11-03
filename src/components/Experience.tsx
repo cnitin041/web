@@ -44,11 +44,13 @@ const experiences = [
 export default function Experience() {
   return (
     <section className="section" id="experience">
+      <p className="chapter-label"><span>03</span> THE JOURNEY SO FAR</p>
       <div className="section-header">
-        <h2>Work Experience</h2>
+        <h2>Experience points<span>.</span></h2>
         <div className="section-line" />
       </div>
 
+      <p className="section-subtitle">Work experience, milestones, and lessons learned</p>
       <div className="timeline">
         {experiences.map((exp) => (
           <div key={exp.title + exp.company} className="timeline-item">

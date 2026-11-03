@@ -1,11 +1,13 @@
 export default function About() {
   return (
     <section className="section" id="about">
+      <p className="chapter-label"><span>01</span> THE ORIGIN STORY</p>
       <div className="section-header">
-        <h2>About Me</h2>
+        <h2>Meet the adventurer<span>.</span></h2>
         <div className="section-line" />
       </div>
 
+      <p className="section-subtitle">A little about me</p>
       <p className="about-text">
         Full Stack AI Engineer focused on taking AI products from prototype to production. My work spans
         multi-model inference, GPU performance, secure backend systems, and workflow automation—from

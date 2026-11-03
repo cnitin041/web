@@ -1,10 +1,3 @@
-const projectColors: Record<string, string> = {
-  'Listen — AI Voice Memo': 'linear-gradient(135deg, #18364d, #2f7c78)',
-  'Lightweight RAG Chat Service': 'linear-gradient(135deg, #234b62, #568b8b)',
-  'Content Manager & SEO Blog Generator': 'linear-gradient(135deg, #38576d, #7e9c91)',
-  'Cross-Platform Medical Application': 'linear-gradient(135deg, #28516a, #6c9b97)',
-}
-
 const projects = [
   {
     title: 'Listen — AI Voice Memo',
@@ -39,21 +32,23 @@ const projects = [
 export default function Projects() {
   return (
     <section className="section" id="projects">
+      <p className="chapter-label"><span>05</span> THE QUEST LOG</p>
       <div className="section-header">
-        <h2>Projects</h2>
+        <h2>Quests conquered<span>.</span></h2>
         <div className="section-line" />
       </div>
 
+      <p className="section-subtitle">Selected projects, built for the real world</p>
       <div className="projects-grid">
-        {projects.map((project) => (
+        {projects.map((project, index) => (
           <div key={project.title} className="project-card">
-            <div
-              className="project-image"
-              style={{ background: projectColors[project.title] }}
-            >
+            <div className="project-image">
+              <span className="quest-number">QUEST 0{index + 1}</span>
               <span className="project-image-text"><i className={`fas ${project.icon}`} aria-hidden="true" /></span>
+              <span className="quest-star" aria-hidden="true">✦</span>
             </div>
             <div className="project-card-body">
+              <span className="quest-status"><i className="fas fa-check" /> QUEST COMPLETE</span>
               <h3>{project.title}</h3>
               <p>{project.description}</p>
               {project.tags && (
