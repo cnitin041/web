@@ -19,14 +19,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
-                try {
-                  var theme = localStorage.getItem('theme');
-                  if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                    document.documentElement.setAttribute('data-theme', 'dark');
-                  } else {
-                    document.documentElement.setAttribute('data-theme', 'light');
+                function updateTheme() {
+                  var hour = new Date().getHours();
+                  var theme = hour >= 6 && hour < 18 ? 'light' : 'dark';
+                  if (document.documentElement.getAttribute('data-theme') !== theme) {
+                    document.documentElement.setAttribute('data-theme', theme);
                   }
-                } catch(e) {}
+                }
+                updateTheme();
+                window.setInterval(updateTheme, 60000);
+                window.addEventListener('focus', updateTheme);
               })();
             `,
           }}
