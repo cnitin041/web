@@ -1646,7 +1646,7 @@ footer .footer-text { color: #9eb0aa; }
   .hero-cta .btn { flex: 0 1 auto; width: auto; padding: 12px 13px; font-size: .72rem; }
   .hero-contact { gap: 8px 16px; }
   .hero-art { height: 345px; }
-  .hero-image-wrapper { width: 180px; }
+  .hero-image-wrapper { left: -20px; right: auto; width: 180px; }
   .hero-bottomline { left: 20px; width: calc(100% - 40px); font-size: .51rem; }
   .art-caption { top: 32px; left: 30px; }
   .container { padding: 0 20px; }
