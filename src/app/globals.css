@@ -1696,25 +1696,64 @@ footer .footer-text { color: #9eb0aa; }
 .familiar-spark { position: absolute; top: -5px; right: 1px; color: #bd8a53; font-size: .85rem; text-shadow: 0 1px #fffaf0; }
 .familiar-mark { display: block; width: 100%; height: 100%; }
 
-.familiar-thought {
-  position: relative;
-  width: min(270px, calc(100vw - 32px));
-  padding: 17px 38px 15px 17px;
+.familiar-button:focus-visible, .familiar-panel-close:focus-visible, .familiar-composer input:focus-visible, .familiar-composer button:focus-visible { outline: 3px solid #d8ae6f; outline-offset: 3px; }
+.familiar-toggle-icon { color: #344d4b; font-size: 1.2rem; }
+
+.familiar-panel {
+  display: flex;
+  flex-direction: column;
+  width: min(360px, calc(100vw - 32px));
+  max-height: min(520px, calc(100dvh - 190px));
+  overflow: hidden;
   border: 1px solid #c8b38e;
   border-radius: 12px 12px 3px 12px;
   background: var(--bg-card);
   color: var(--text);
-  box-shadow: 0 12px 32px rgba(16, 32, 35, .2);
+  box-shadow: 0 16px 50px rgba(16, 32, 35, .28);
+  animation: familiar-appear .2s ease-out;
 }
 
-.familiar-thought-name { color: #a77b4d; font-size: .6rem; font-weight: 800; letter-spacing: .13em; }
-.familiar-thought-name span { color: #c29a60; }
-.familiar-thought p { margin: 8px 0; font-family: Georgia, serif; font-size: .9rem; line-height: 1.5; }
-.familiar-thought small { color: var(--text-muted); font-size: .65rem; }
-.familiar-thought-close { position: absolute; top: 9px; right: 10px; width: 28px; height: 28px; border: 0; border-radius: 50%; background: transparent; color: var(--text-muted); cursor: pointer; font-size: 1.2rem; line-height: 1; }
-.familiar-thought-close:hover { background: var(--bg); color: var(--text); }
+@keyframes familiar-appear {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.familiar-panel-header {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 11px;
+  padding: 13px 15px;
+  background: #203a40;
+  color: #f7f1e4;
+}
+
+.familiar-panel-avatar { width: 40px; height: 40px; padding: 3px; border-radius: 50%; background: #eddfc5; }
+.familiar-panel-heading { flex: 1; min-width: 0; }
+.familiar-panel-heading > span { color: #d6b77f; font-size: .55rem; font-weight: 800; letter-spacing: .16em; }
+.familiar-panel-heading h2 { margin: 2px 0 0; font-family: Georgia, serif; font-size: 1.08rem; font-weight: 500; }
+.familiar-panel-close { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid rgba(242, 230, 207, .28); border-radius: 50%; background: transparent; color: #f7f1e4; cursor: pointer; font-size: 1.25rem; line-height: 1; }
+.familiar-panel-close:hover { background: rgba(255, 255, 255, .1); }
+
+.familiar-messages { display: flex; flex: 1 1 auto; flex-direction: column; gap: 12px; min-height: 130px; padding: 16px; overflow-y: auto; overscroll-behavior: contain; }
+.familiar-message { max-width: 90%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 3px 11px 11px 11px; background: var(--bg); }
+.familiar-message--visitor { align-self: flex-end; border-color: #476160; border-radius: 11px 3px 11px 11px; background: #476160; color: #f6eee0; }
+.familiar-message-author { display: block; margin-bottom: 4px; color: #a77b4d; font-size: .55rem; font-weight: 800; letter-spacing: .14em; }
+.familiar-message p { margin: 0; color: inherit; font-size: .78rem; line-height: 1.55; }
+
+.familiar-composer { display: flex; flex: 0 0 auto; gap: 8px; margin: 0 14px; padding: 6px 7px 6px 11px; border: 1px solid var(--border); border-radius: 5px; background: var(--bg); }
+.familiar-composer input { flex: 1; min-width: 0; padding: 5px 0; border: 0; outline: 0; background: transparent; color: var(--text); font: inherit; font-size: .75rem; }
+.familiar-composer input::placeholder { color: var(--text-muted); opacity: 1; }
+.familiar-composer button { display: grid; place-items: center; width: 32px; height: 32px; border: 0; border-radius: 4px; background: #476160; color: #f6eee0; cursor: pointer; }
+.familiar-composer button:disabled { cursor: default; opacity: .45; }
+.familiar-footnote { flex: 0 0 auto; margin: 9px 14px 11px; color: var(--text-muted); font-size: .58rem; text-align: center; }
+
+@media (prefers-reduced-motion: reduce) {
+  .familiar-panel { animation: none; }
+}
 
 @media (max-width: 540px) {
   .familiar { right: 16px; bottom: 76px; }
   .familiar-button { width: 56px; height: 56px; }
+  .familiar-panel { max-height: min(480px, calc(100dvh - 160px)); }
 }
