@@ -8,6 +8,9 @@ const skillCategories = [
       'RAG Pipelines',
       'Speech-to-Text & Text-to-Speech',
       'AI Workflow Automation',
+      'LangChain',
+      'LangGraph',
+      'LangSmith',
     ],
   },
   {
