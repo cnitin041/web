@@ -6,7 +6,7 @@ const experiences = [
     badge: 'Current',
     metric: '3× inference speed',
     points: [
-      'Built W3Agent for email classification and context-aware outreach, with a custom lead pipeline and analytics dashboard.',
+      'Built W3Agent with LangChain and LangGraph to classify emails, draft context-aware outreach, manage leads, and automate guest-post follow-ups.',
       'Developed WarrantyHub to automate warranty registration and order verification across multiple Amazon seller accounts.',
       'Designed an AI voice agent for inbound and outbound calls, combining speech-to-text, LLMs, and text-to-speech to qualify leads, answer FAQs, and schedule appointments.',
       'Deployed a Flask multi-model backend on NVIDIA L4; tuned Gunicorn workers, model preloading, GPU memory, and CUDA for concurrent text, image, and recommendation workloads.',
@@ -44,11 +44,13 @@ const experiences = [
 export default function Experience() {
   return (
     <section className="section" id="experience">
+      <p className="chapter-label"><span>03</span> THE JOURNEY SO FAR</p>
       <div className="section-header">
-        <h2>Work Experience</h2>
+        <h2>Experience points<span>.</span></h2>
         <div className="section-line" />
       </div>
 
+      <p className="section-subtitle">Work experience, milestones, and lessons learned</p>
       <div className="timeline">
         {experiences.map((exp) => (
           <div key={exp.title + exp.company} className="timeline-item">

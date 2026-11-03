@@ -12,28 +12,13 @@ const links = [
 ]
 
 export default function Navigation() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light')
   const [menuOpen, setMenuOpen] = useState(false)
-
-  useEffect(() => {
-    const current = document.documentElement.getAttribute('data-theme') as
-      | 'light'
-      | 'dark'
-      | null
-    setTheme(current === 'dark' ? 'dark' : 'light')
-  }, [])
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
-  const toggleTheme = () => {
-    const next = theme === 'dark' ? 'light' : 'dark'
-    setTheme(next)
-    document.documentElement.setAttribute('data-theme', next)
-    localStorage.setItem('theme', next)
-  }
 
   const closeMenu = useCallback(() => setMenuOpen(false), [])
 
@@ -70,20 +55,6 @@ export default function Navigation() {
           ))}
         </ul>
 
-        <div className="nav-actions">
-          <button
-            className="theme-toggle"
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-            title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-          >
-            {theme === 'dark' ? (
-              <i className="fas fa-sun"></i>
-            ) : (
-              <i className="fas fa-moon"></i>
-            )}
-          </button>
-        </div>
       </div>
 
       <div
