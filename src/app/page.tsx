@@ -8,6 +8,7 @@ import Projects from '@/components/Projects'
 import Certifications from '@/components/Certifications'
 import Footer from '@/components/Footer'
 import ScrollToTop from '@/components/ScrollToTop'
+import FamiliarChat from '@/components/FamiliarChat'
 import Animations from '@/components/Animations'
 
 export default function Home() {
@@ -25,6 +26,7 @@ export default function Home() {
       </div>
       <Footer />
       <ScrollToTop />
+      <FamiliarChat />
       <Animations />
     </>
   )
