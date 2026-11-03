@@ -2,8 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react'
 
-const familiarSize = 62
-
 function FamiliarMark() {
   return (
     <svg className="familiar-mark" viewBox="0 0 64 64" aria-hidden="true">
@@ -18,175 +16,98 @@ function FamiliarMark() {
   )
 }
 
-function clamp(value: number, min: number, max: number) {
-  return Math.min(Math.max(value, min), Math.max(min, max))
-}
-
-function getFamiliarPosition(x: number, y: number) {
-  const maxY = Math.max(80, window.innerHeight - familiarSize - 12)
-  const top = clamp(y, 80, maxY)
-  let maxX = window.innerWidth - familiarSize - 12
-
-  if (top > window.innerHeight - 210) {
-    maxX = Math.min(maxX, window.innerWidth - familiarSize - 100)
-  }
-
-  return {
-    x: clamp(x, 12, maxX),
-    y: top,
-  }
-}
-
-function randomFamiliarPosition() {
-  const maxX = Math.max(12, window.innerWidth - familiarSize - 12)
-  const maxY = Math.max(80, window.innerHeight - familiarSize - 12)
-  return getFamiliarPosition(
-    12 + Math.random() * Math.max(0, maxX - 12),
-    80 + Math.random() * Math.max(0, maxY - 80),
-  )
-}
-
 export default function FamiliarChat() {
+  const [visible, setVisible] = useState(false)
   const [open, setOpen] = useState(false)
-  const [following, setFollowing] = useState(false)
-  const [position, setPosition] = useState<{ x: number; y: number } | null>(null)
+  const [showGreeting, setShowGreeting] = useState(false)
+  const [reaction, setReaction] = useState(0)
   const familiarRef = useRef<HTMLButtonElement>(null)
   const closeRef = useRef<HTMLButtonElement>(null)
-  const chatButtonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
-    setPosition(getFamiliarPosition(window.innerWidth - 100, window.innerHeight - 190))
-    const handleResize = () => {
-      setPosition((current) => current ? getFamiliarPosition(current.x, current.y) : current)
+    const hero = document.getElementById('hero')
+    if (!hero) return
+
+    const updateVisibility = () => {
+      const pastHero = hero.getBoundingClientRect().bottom <= 0
+      setVisible(pastHero)
+      if (!pastHero) setOpen(false)
     }
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
+
+    updateVisibility()
+    window.addEventListener('scroll', updateVisibility, { passive: true })
+    window.addEventListener('resize', updateVisibility)
+    return () => {
+      window.removeEventListener('scroll', updateVisibility)
+      window.removeEventListener('resize', updateVisibility)
+    }
   }, [])
 
   useEffect(() => {
-    if (following || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const interval = window.setInterval(() => setPosition(randomFamiliarPosition()), 3400)
-    return () => window.clearInterval(interval)
-  }, [following])
-
-  useEffect(() => {
-    if (!following) return
-    const handlePointerMove = (event: PointerEvent) => {
-      setPosition(getFamiliarPosition(event.clientX + 24, event.clientY + 22))
-    }
-    window.addEventListener('pointermove', handlePointerMove)
-    return () => window.removeEventListener('pointermove', handlePointerMove)
-  }, [following])
+    if (!visible) return
+    setShowGreeting(true)
+    const timeout = window.setTimeout(() => setShowGreeting(false), 4800)
+    return () => window.clearTimeout(timeout)
+  }, [visible])
 
   useEffect(() => {
     if (!open) return
-
+    setShowGreeting(false)
     closeRef.current?.focus()
+
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setOpen(false)
-        chatButtonRef.current?.focus()
+        familiarRef.current?.focus()
       }
     }
-
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [open])
 
-  const closeChat = () => {
-    setOpen(false)
-    chatButtonRef.current?.focus()
-  }
+  if (!visible) return null
 
   return (
-    <div className="familiar-chat">
+    <div className="familiar">
+      {showGreeting && !open && (
+        <p className="familiar-greeting" role="status">Psst... hi, traveler! I&apos;m Nitin&apos;s little guide. Welcome to the adventure.</p>
+      )}
+      {open && (
+        <section className="familiar-panel" id="familiar-panel" role="dialog" aria-labelledby="familiar-title" aria-modal="false">
+          <header className="familiar-panel-header">
+            <div className="familiar-panel-avatar"><FamiliarMark /></div>
+            <div className="familiar-panel-heading">
+              <span>YOUR PORTFOLIO GUIDE</span>
+              <h2 id="familiar-title">Nitin&apos;s Familiar</h2>
+            </div>
+            <button ref={closeRef} className="familiar-panel-close" type="button" onClick={() => setOpen(false)} aria-label="Close chat">×</button>
+          </header>
+          <div className="familiar-coming-soon" aria-live="polite">
+            <span className="familiar-coming-soon-star" aria-hidden="true">✦</span>
+            <div>
+              <strong>Coming soon</strong>
+              <p>Well met, traveler! I&apos;m Nitin&apos;s curious little guide. My answer spell is still being prepared; once my magic is connected, I&apos;ll help you explore the journey.</p>
+            </div>
+          </div>
+          <p className="familiar-footnote">Until then, the quests are yours to explore</p>
+        </section>
+      )}
       <button
         ref={familiarRef}
         type="button"
-        className={`familiar-roamer${following ? ' familiar-roamer--following' : ''}`}
-        style={position ? { left: position.x, top: position.y } : undefined}
-        onClick={() => setFollowing((value) => !value)}
-        aria-label={following ? 'Stop Fable from following the pointer' : 'Make Fable follow the pointer'}
-        aria-pressed={following}
-        title={following ? 'Following your pointer — click to let Fable roam' : 'Click to have Fable follow your pointer'}
+        className={`familiar-button familiar-button--reaction-${reaction % 2 ? 'two' : 'one'}`}
+        onClick={() => {
+          setReaction((current) => current + 1)
+          setOpen((current) => !current)
+        }}
+        aria-expanded={open}
+        aria-controls="familiar-panel"
+        aria-label={open ? "Close Nitin's Familiar" : "Meet Nitin's Familiar"}
+        title={open ? "Close Nitin's Familiar" : "Meet Nitin's Familiar"}
       >
         <FamiliarMark />
-        <span className="familiar-roamer-spark" aria-hidden="true">✦</span>
+        <span className={`familiar-spark${open ? ' familiar-spark--close' : ''}`} aria-hidden="true">{open ? '×' : '✦'}</span>
       </button>
-
-      <div className="familiar-controls">
-        <section
-          className="familiar-panel"
-          id="familiar-chat-panel"
-          role="dialog"
-          aria-labelledby="familiar-chat-title"
-          hidden={!open}
-        >
-          <div className="familiar-panel-header">
-            <div className="familiar-panel-portrait"><FamiliarMark /></div>
-            <div className="familiar-panel-heading">
-              <span>YOUR RESUME GUIDE</span>
-              <h2 id="familiar-chat-title">Fable the Familiar</h2>
-            </div>
-            <button
-              ref={closeRef}
-              type="button"
-              className="familiar-close"
-              onClick={closeChat}
-              aria-label="Close chat"
-            >
-              <i className="fas fa-times" aria-hidden="true" />
-            </button>
-          </div>
-
-          <div className="familiar-panel-content">
-            <div className="familiar-message-row">
-              <div className="familiar-message-avatar"><FamiliarMark /></div>
-              <div className="familiar-message">
-                <span className="familiar-message-author">FABLE <span>✦</span></span>
-                <p>Greetings, traveler. Soon I&apos;ll help you explore Nitin&apos;s skills, experience, education, and projects.</p>
-              </div>
-            </div>
-
-            <div className="familiar-coming-soon">
-              <span className="coming-soon-star">✦</span>
-              <div>
-                <strong>Coming soon</strong>
-                <p>I&apos;m gathering the story scrolls. Ask me anything about Nitin&apos;s journey when I&apos;m ready.</p>
-              </div>
-            </div>
-
-            <div className="familiar-topics" aria-label="Topics this assistant will cover">
-              <span>About</span>
-              <span>Skills</span>
-              <span>Experience</span>
-              <span>Projects</span>
-              <span>Education</span>
-            </div>
-          </div>
-
-          <div className="familiar-composer">
-            <input type="text" placeholder="Chat will be available soon" disabled aria-label="Chat input, coming soon" />
-            <button type="button" disabled aria-label="Send message">
-              <i className="fas fa-arrow-up" aria-hidden="true" />
-            </button>
-          </div>
-          <p className="familiar-footnote">A little guide to Nitin&apos;s professional adventure</p>
-        </section>
-
-        <button
-          ref={chatButtonRef}
-          type="button"
-          className={`familiar-chat-button${open ? ' familiar-chat-button--open' : ''}`}
-          onClick={() => setOpen((value) => !value)}
-          aria-expanded={open}
-          aria-controls="familiar-chat-panel"
-          aria-label={open ? 'Close Fable chat' : 'Open Fable chat'}
-          title={open ? 'Close Fable chat' : 'Chat with Fable'}
-        >
-          <i className={`fas ${open ? 'fa-times' : 'fa-comment-dots'}`} aria-hidden="true" />
-        </button>
-      </div>
     </div>
   )
 }
