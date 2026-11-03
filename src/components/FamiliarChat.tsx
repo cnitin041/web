@@ -19,6 +19,7 @@ function FamiliarMark() {
 export default function FamiliarChat() {
   const [visible, setVisible] = useState(false)
   const [open, setOpen] = useState(false)
+  const [showGreeting, setShowGreeting] = useState(false)
   const [reaction, setReaction] = useState(0)
   const familiarRef = useRef<HTMLButtonElement>(null)
   const closeRef = useRef<HTMLButtonElement>(null)
@@ -43,7 +44,15 @@ export default function FamiliarChat() {
   }, [])
 
   useEffect(() => {
+    if (!visible) return
+    setShowGreeting(true)
+    const timeout = window.setTimeout(() => setShowGreeting(false), 4800)
+    return () => window.clearTimeout(timeout)
+  }, [visible])
+
+  useEffect(() => {
     if (!open) return
+    setShowGreeting(false)
     closeRef.current?.focus()
 
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -60,13 +69,16 @@ export default function FamiliarChat() {
 
   return (
     <div className="familiar">
+      {showGreeting && !open && (
+        <p className="familiar-greeting" role="status">Psst... hi, traveler! I&apos;m Nitin&apos;s little guide. Welcome to the adventure.</p>
+      )}
       {open && (
         <section className="familiar-panel" id="familiar-panel" role="dialog" aria-labelledby="familiar-title" aria-modal="false">
           <header className="familiar-panel-header">
             <div className="familiar-panel-avatar"><FamiliarMark /></div>
             <div className="familiar-panel-heading">
               <span>YOUR PORTFOLIO GUIDE</span>
-              <h2 id="familiar-title">Fable the Familiar</h2>
+              <h2 id="familiar-title">Nitin&apos;s Familiar</h2>
             </div>
             <button ref={closeRef} className="familiar-panel-close" type="button" onClick={() => setOpen(false)} aria-label="Close chat">×</button>
           </header>
@@ -74,7 +86,7 @@ export default function FamiliarChat() {
             <span className="familiar-coming-soon-star" aria-hidden="true">✦</span>
             <div>
               <strong>Coming soon</strong>
-              <p>Well met, traveler! I&apos;m Fable, the curious little guide to this corner of the realm. My answer spell is still being prepared. Once my magic is connected, I&apos;ll be ready to help you explore Nitin&apos;s journey.</p>
+              <p>Well met, traveler! I&apos;m Nitin&apos;s curious little guide. My answer spell is still being prepared; once my magic is connected, I&apos;ll help you explore the journey.</p>
             </div>
           </div>
           <p className="familiar-footnote">Until then, the quests are yours to explore</p>
@@ -90,8 +102,8 @@ export default function FamiliarChat() {
         }}
         aria-expanded={open}
         aria-controls="familiar-panel"
-        aria-label={open ? 'Close Fable chat' : 'Chat with Fable'}
-        title={open ? 'Close Fable chat' : 'Chat with Fable'}
+        aria-label={open ? "Close Nitin's Familiar" : "Meet Nitin's Familiar"}
+        title={open ? "Close Nitin's Familiar" : "Meet Nitin's Familiar"}
       >
         <FamiliarMark />
         <span className={`familiar-spark${open ? ' familiar-spark--close' : ''}`} aria-hidden="true">{open ? '×' : '✦'}</span>
