@@ -19,6 +19,7 @@ function FamiliarMark() {
 export default function FamiliarChat() {
   const [visible, setVisible] = useState(false)
   const [open, setOpen] = useState(false)
+  const [reaction, setReaction] = useState(0)
   const familiarRef = useRef<HTMLButtonElement>(null)
   const closeRef = useRef<HTMLButtonElement>(null)
 
@@ -82,15 +83,18 @@ export default function FamiliarChat() {
       <button
         ref={familiarRef}
         type="button"
-        className="familiar-button"
-        onClick={() => setOpen((current) => !current)}
+        className={`familiar-button familiar-button--reaction-${reaction % 2 ? 'two' : 'one'}`}
+        onClick={() => {
+          setReaction((current) => current + 1)
+          setOpen((current) => !current)
+        }}
         aria-expanded={open}
         aria-controls="familiar-panel"
         aria-label={open ? 'Close Fable chat' : 'Chat with Fable'}
         title={open ? 'Close Fable chat' : 'Chat with Fable'}
       >
-        {open ? <i className="fas fa-times familiar-toggle-icon" aria-hidden="true" /> : <FamiliarMark />}
-        {!open && <span className="familiar-spark" aria-hidden="true">✦</span>}
+        <FamiliarMark />
+        <span className={`familiar-spark${open ? ' familiar-spark--close' : ''}`} aria-hidden="true">{open ? '×' : '✦'}</span>
       </button>
     </div>
   )

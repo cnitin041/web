@@ -1674,6 +1674,12 @@ footer .footer-text { color: #9eb0aa; }
   flex-direction: column;
   align-items: flex-end;
   gap: 12px;
+  animation: familiar-arrive .55s cubic-bezier(.2,.8,.2,1) both;
+}
+
+@keyframes familiar-arrive {
+  from { opacity: 0; transform: translateY(14px) scale(.92); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .familiar-button {
@@ -1692,8 +1698,23 @@ footer .footer-text { color: #9eb0aa; }
 }
 
 .familiar-button:hover { box-shadow: 0 12px 30px rgba(25, 43, 43, .32); }
+.familiar-button--reaction-one { animation: familiar-greet .7s ease-out; }
+.familiar-button--reaction-two { animation: familiar-curious .55s ease-in-out; }
 .familiar-spark { position: absolute; top: -5px; right: 1px; color: #bd8a53; font-size: .85rem; text-shadow: 0 1px #fffaf0; }
+.familiar-spark--close { display: grid; place-items: center; top: auto; right: -4px; bottom: -3px; width: 22px; height: 22px; border: 1px solid #c6a775; border-radius: 50%; background: #304b4c; color: #f4ecdc; font-size: 1rem; line-height: 1; text-shadow: none; }
 .familiar-mark { display: block; width: 100%; height: 100%; }
+
+@keyframes familiar-greet {
+  0%, 100% { transform: rotate(0) scale(1); }
+  30% { transform: rotate(-10deg) scale(1.08); }
+  60% { transform: rotate(8deg) scale(1.05); }
+}
+
+@keyframes familiar-curious {
+  0%, 100% { transform: rotate(0); }
+  35% { transform: rotate(9deg) scale(1.08); }
+  70% { transform: rotate(-7deg) scale(1.03); }
+}
 
 .familiar-button:focus-visible, .familiar-panel-close:focus-visible { outline: 3px solid #d8ae6f; outline-offset: 3px; }
 .familiar-toggle-icon { color: #344d4b; font-size: 1.2rem; }
