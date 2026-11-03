@@ -1,45 +1,6 @@
 'use client'
 
-import { FormEvent, useEffect, useRef, useState } from 'react'
-
-type ChatMessage = {
-  id: number
-  role: 'familiar' | 'visitor'
-  text: string
-}
-
-const greeting = "Hello, traveler! I'm Fable. Ask me about Nitin's work, skills, projects, or studies, and I'll point you to the right chapter."
-
-function replyTo(question: string) {
-  const message = question.toLowerCase()
-
-  if (/\b(hi|hello|hey|good morning|good afternoon)\b/.test(message)) {
-    return "Well met! What would you like to explore: Nitin's projects, experience, skills, or education?"
-  }
-  if (/\b(project|built|build|app|apps|portfolio)\b/.test(message)) {
-    return "The quest log has a few highlights: an AI voice memo app, a lightweight RAG chat service, an automated SEO content tool, and a medical app used by 3,000+ people. Which one sounds interesting?"
-  }
-  if (/\b(experience|work|career|job|company|driftpoint|digitalz)\b/.test(message)) {
-    return "Nitin is a Full Stack AI Engineer at DriftPoint Technologies, where he builds AI agents, voice systems, and GPU-optimized inference. Before that, he worked on CRM and ERP systems at DR. Digitalz and shipped freelance apps with 10,000+ downloads."
-  }
-  if (/\b(skill|technology|tech stack|tools|language|framework)\b/.test(message)) {
-    return "His toolkit spans Python and Node.js, LangChain and LangGraph, RAG and LLMs, Flask APIs, CUDA/GPU tuning, databases, and Flutter. The Skills chapter has the full inventory."
-  }
-  if (/\b(education|degree|college|study|studied|university)\b/.test(message)) {
-    return "Nitin earned a B.Tech in AI & Data Science from Arya College of Engineering & I.T in 2024, graduating with an 8.78 CGPA. He also presented a research paper on MongoDB at a national conference."
-  }
-  if (/\b(contact|email|hire|reach|connect)\b/.test(message)) {
-    return "Ready to start a new quest together? You can reach Nitin at cnitin041@gmail.com, or use the Get in touch link in the hero."
-  }
-  if (/\b(inference|gpu|cuda|accuracy|performance|metric|result|impact)\b/.test(message)) {
-    return "A few milestones from the journey: 3× faster inference, 45% higher domain accuracy, and support for 1,000+ concurrent requests. You'll find more details in the experience chapter."
-  }
-  if (/\b(who|about|nitin|him|background)\b/.test(message)) {
-    return "Nitin is a Full Stack AI Engineer focused on taking AI products from prototype to production—from voice agents and RAG apps to secure backends and cross-platform products. What part of his journey should we explore?"
-  }
-
-  return "That chapter isn't in my map just yet. I can help with Nitin's projects, experience, skills, education, or contact details—what catches your eye?"
-}
+import { useEffect, useRef, useState } from 'react'
 
 function FamiliarMark() {
   return (
@@ -58,14 +19,8 @@ function FamiliarMark() {
 export default function FamiliarChat() {
   const [visible, setVisible] = useState(false)
   const [open, setOpen] = useState(false)
-  const [input, setInput] = useState('')
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    { id: 0, role: 'familiar', text: greeting },
-  ])
   const familiarRef = useRef<HTMLButtonElement>(null)
-  const inputRef = useRef<HTMLInputElement>(null)
-  const messagesEndRef = useRef<HTMLDivElement>(null)
-  const nextMessageId = useRef(1)
+  const closeRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     const hero = document.getElementById('hero')
@@ -88,7 +43,7 @@ export default function FamiliarChat() {
 
   useEffect(() => {
     if (!open) return
-    inputRef.current?.focus()
+    closeRef.current?.focus()
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -99,23 +54,6 @@ export default function FamiliarChat() {
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [open])
-
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' })
-  }, [messages, open])
-
-  const sendMessage = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    const question = input.trim()
-    if (!question) return
-
-    setMessages((current) => [
-      ...current,
-      { id: nextMessageId.current++, role: 'visitor', text: question },
-      { id: nextMessageId.current++, role: 'familiar', text: replyTo(question) },
-    ])
-    setInput('')
-  }
 
   if (!visible) return null
 
@@ -129,32 +67,16 @@ export default function FamiliarChat() {
               <span>YOUR PORTFOLIO GUIDE</span>
               <h2 id="familiar-title">Fable the Familiar</h2>
             </div>
-            <button className="familiar-panel-close" type="button" onClick={() => setOpen(false)} aria-label="Close chat">×</button>
+            <button ref={closeRef} className="familiar-panel-close" type="button" onClick={() => setOpen(false)} aria-label="Close chat">×</button>
           </header>
-          <div className="familiar-messages" aria-live="polite" aria-relevant="additions text">
-            {messages.map((message) => (
-              <div key={message.id} className={`familiar-message familiar-message--${message.role}`}>
-                {message.role === 'familiar' && <span className="familiar-message-author">FABLE</span>}
-                <p>{message.text}</p>
-              </div>
-            ))}
-            <div ref={messagesEndRef} />
+          <div className="familiar-coming-soon" aria-live="polite">
+            <span className="familiar-coming-soon-star" aria-hidden="true">✦</span>
+            <div>
+              <strong>Coming soon</strong>
+              <p>Well met, traveler! I&apos;m Fable, the curious little guide to this corner of the realm. My answer spell is still being prepared. Once my magic is connected, I&apos;ll be ready to help you explore Nitin&apos;s journey.</p>
+            </div>
           </div>
-          <form className="familiar-composer" onSubmit={sendMessage}>
-            <input
-              ref={inputRef}
-              value={input}
-              onChange={(event) => setInput(event.target.value)}
-              type="text"
-              maxLength={280}
-              placeholder="Ask about Nitin's journey..."
-              aria-label="Message Fable"
-            />
-            <button type="submit" disabled={!input.trim()} aria-label="Send message">
-              <i className="fas fa-arrow-up" aria-hidden="true" />
-            </button>
-          </form>
-          <p className="familiar-footnote">A friendly guide to Nitin&apos;s portfolio</p>
+          <p className="familiar-footnote">Until then, the quests are yours to explore</p>
         </section>
       )}
       <button
